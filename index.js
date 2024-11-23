@@ -11,12 +11,13 @@ app.use(express.urlencoded({extended:true,limit:"50mb"}))
 
 const getConnection= async() =>{
     try {
+        console.log(process.env.MONGO_URI)
        await mongoose
         .connect(process.env.MONGO_URI);
                     console.log('db is connected')
         }
         catch(error) {
-            console.log('failed to connect to db');
+            console.log(error);
             process.exit(1);
         }
     }
